@@ -4,4 +4,15 @@
 
 <h1>Login Page</h1>
 
+{% for user in users %}
+
+<div>
+    <p> {{ user.id }}</p>
+    <p> {{ user.name }}</p>
+    <p> {{ user.Profession }} </p>
+    <hr>
+</div>
+
+{% endfor %}
+
 {% endblock %}

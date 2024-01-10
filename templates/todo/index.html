@@ -2,6 +2,19 @@
 
 {% block content %}
 
-<h1> Home Page</h1>
+<h1> Home Page </h1>
+
+<h3> First Name: <span> {{ first_name }} </span></h3>
+<h3> Last Name: <span> {{ last_name }}</span></h3>
+
+{% if first_name == "Harish" %}
+
+<p> Hello Harish!! </p>
+
+{% else %}
+
+<p> Wrong Person </p>
+
+{% endif %}
 
 {% endblock %}
