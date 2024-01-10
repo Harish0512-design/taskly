@@ -6,5 +6,6 @@ from todo import views
 urlpatterns = [
     path("register/", views.register),
     path("login/", views.login),
-    path("", RedirectView.as_view(url="register/"))
+    path("home/", views.home),
+    path("", RedirectView.as_view(url="home/"))
 ]
