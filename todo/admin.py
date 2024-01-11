@@ -1,12 +1,12 @@
 from django.contrib import admin
 
-from todo.models import Task
+from todo.models import Task, Review, Profile
 
 
 # Register your models here.
 
 class TaskAdmin(admin.ModelAdmin):
-    list_display = ("id", "title")
+    list_display = ("id", "title", "content")
     list_filter = ("date_posted", "date_updated")
     list_editable = ("title", "content")
     list_per_page = 10
@@ -19,3 +19,5 @@ class TaskAdmin(admin.ModelAdmin):
 
 
 admin.site.register(Task, TaskAdmin)
+admin.site.register(Review)
+admin.site.register(Profile)
