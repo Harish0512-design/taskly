@@ -1,5 +1,5 @@
 # from django.http import HttpResponse
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.db import connection
 
 from .forms import TaskForm
@@ -49,6 +49,25 @@ def home(request):
 
 def create_task(request):
     form = TaskForm()
+    success_msg = "Task Created Successfully"
+    error_msg = "Something Went Wrong. Please Try Again..."
+
+    if request.method == "POST":
+        form = TaskForm(request.POST)
+
+        if form.is_valid():
+            form.save()
+            return redirect("/todo/create-task/?msg=" + success_msg)
+
+        return redirect("/todo/create-task/?msg=" + error_msg)
+
     context = {'form': form}
 
     return render(request, "todo/task_form.html", context=context)
+
+
+def task_list(request):
+    tasks = Task.objects.all()
+    context = {"tasks": tasks}
+
+    return render(request, "todo/task_list.html", context=context)
