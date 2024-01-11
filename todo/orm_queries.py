@@ -115,3 +115,15 @@
 # reviews = Review.objects.annotate(review_count = Count('task'))
 
 
+# union(), intersection(), difference()
+
+# qs1 = Author.objects.values_list('name')
+# qs2 = Entry.objects.values_list('headline')
+
+# qs1.union(qs2).order_by('name')
+
+# qs1.union(qs2, qs3)
+
+# qs1.intersection(qs2)
+
+# qs1.difference(qs2)
