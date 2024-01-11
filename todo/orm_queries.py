@@ -111,7 +111,7 @@
 # used for adding calculated field for every object in queryset.
 # used for aggregations
 
-# from django.db.models import Count
+# from django.db.models import Count, Avg, Max, Min, Sum, StdDev, Variance
 # reviews = Review.objects.annotate(review_count = Count('task'))
 
 
