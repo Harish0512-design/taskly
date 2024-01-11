@@ -92,3 +92,26 @@
 # Task.objects.values_list('id', 'title')
 
 
+
+# optimization purpose we use select_related and prefetch_related
+
+# select_related()
+
+# used as joins for foreign keys and one-to-one fields
+# Review.objects.select_related('task').values_list('id', 'task__id', 'task__title')
+
+# prefetch_related()
+
+# used as joins for many-to-many or many-to-one (reverse foriegn key)
+# Review.objects.prefetch_related('task').values_list('id', 'task__id')
+
+
+# annotate()
+
+# used for adding calculated field for every object in queryset.
+# used for aggregations
+
+# from django.db.models import Count
+# reviews = Review.objects.annotate(review_count = Count('task'))
+
+
