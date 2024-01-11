@@ -1,6 +1,8 @@
 # from django.http import HttpResponse
 from django.shortcuts import render
 from django.db import connection
+
+from .forms import TaskForm
 from .models import Task
 
 
@@ -43,3 +45,10 @@ def home(request):
     }
 
     return render(request, "todo/index.html", context=context)
+
+
+def create_task(request):
+    form = TaskForm()
+    context = {'form': form}
+
+    return render(request, "todo/task_form.html", context=context)

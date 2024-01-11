@@ -7,5 +7,6 @@ urlpatterns = [
     path("register/", views.register),
     path("login/", views.login),
     path("home/", views.home),
+    path("create-task", views.create_task),
     path("", RedirectView.as_view(url="home/"))
 ]
