@@ -5,3 +5,14 @@ python manage.py makemigrations
 # creates tables in db using migration files present in migration folder.
 python manage.py migrate
 
+# Django Admin Panel
+
+# Creates a superuser to access admin page, it will prompt to input username, email (optional) and password
+python manage.py createsuperuser
+
+# run the server and redirect to the url "http://127.0.0.1:8000/admin"
+# you can see the admin dashboard login page, "enter username and password" and login.
+# you will find Users and Groups tables which are created using authentication app present in installed_apps.
+
+# to see your models in admin panel, register your models in admin.py of your app.
+
