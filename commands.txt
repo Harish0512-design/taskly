@@ -1,0 +1,7 @@
+
+# creates a migration file with models or tables that need to create in database
+python manage.py makemigrations
+
+# creates tables in db using migration files present in migration folder.
+python manage.py migrate
+
