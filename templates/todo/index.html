@@ -4,17 +4,12 @@
 
 <h1> Home Page </h1>
 
-<h3> First Name: <span> {{ first_name }} </span></h3>
-<h3> Last Name: <span> {{ last_name }}</span></h3>
+{% for task in tasks %}
 
-{% if first_name == "Harish" %}
+<h2> <span>{{task.id}}</span> {{ task.title }} </h2>
+<p> {{ task.content }}</p>
+<hr>
 
-<p> Hello Harish!! </p>
-
-{% else %}
-
-<p> Wrong Person </p>
-
-{% endif %}
+{% endfor %}
 
 {% endblock %}
