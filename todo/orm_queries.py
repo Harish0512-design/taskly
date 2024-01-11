@@ -70,3 +70,25 @@
 
 # NOT:
 # Task.objects.filter(~Q(id__exact = 1))
+
+
+# limit, exclude(), order_by(), distinct(), values(), values_list()
+
+# Task.objects.all()[:10]
+# Task.objects.exclude(Q(title__icontains = "django") | Q(id=2))
+
+# Task.objects.all().order_by('-id') # descending
+# Task.objects.filter(title__icontains = "django").order_by('id') # ascending
+# Task.objects.all().order_by('id', 'title')
+
+# Task.objects.filter(title__icontains = "django").distinct()
+
+# returns a list of dicts
+# Task.objects.values()
+# Task.objects.values('id', 'title')
+
+# returns a list of tuples
+# Task.objects.values_list()
+# Task.objects.values_list('id', 'title')
+
+
