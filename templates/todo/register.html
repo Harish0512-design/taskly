@@ -4,4 +4,19 @@
 
 <h1>Registration Page</h1>
 
+<form method="POST">
+
+    {% csrf_token %}
+
+    {% if messages %}
+        {% for message in messages %}
+            {{message}}
+        {% endfor %}
+    {% endif %}
+
+    {{ form.as_p }}
+
+    <input type="submit" value="Register" />
+</form>
+
 {% endblock %}

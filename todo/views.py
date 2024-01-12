@@ -2,14 +2,27 @@
 from django.shortcuts import render, redirect
 from django.contrib import messages
 
-from .forms import TaskForm
+from .forms import TaskForm, UserRegistrationForm
 from .models import Task
 
 
 # Create your views here.
 def register(request):
-    # return HttpResponse("Registration page")
-    return render(request, "todo/register.html")
+    form = UserRegistrationForm()
+
+    if request.method == "POST":
+        form = UserRegistrationForm(request.POST)
+        if form.is_valid():
+            form.save()
+
+            messages.success(request,"User Created Successfully..")
+            return redirect("/todo/register")
+
+        messages.error(request,form.errors)
+        return redirect("/todo/register")
+
+    context = {"form": form}
+    return render(request, "todo/register.html", context=context)
 
 
 def login(request):

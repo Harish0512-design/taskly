@@ -4,18 +4,13 @@
 
 <h1> Home Page </h1>
 
+<a href="{% url 'user-registration' %}"> Register a User</a>
+
+
 <p>
     <a href="/todo/tasks/create/"> Create Task </a>
-        &nbsp; &nbsp;
+        &nbsp; &nbsp; &nbsp;
     <a href="/todo/tasks/"> Tasks </a>
 </p>
-
-{% for task in tasks %}
-
-<h2> <span>{{task.id}}</span> {{ task.title }} </h2>
-<p> {{ task.content }}</p>
-<hr>
-
-{% endfor %}
 
 {% endblock %}

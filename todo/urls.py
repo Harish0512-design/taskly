@@ -4,7 +4,7 @@ from django.views.generic import RedirectView
 from todo import views
 
 urlpatterns = [
-    path("register/", views.register),
+    path("register/", views.register, name='user-registration'),
     path("login/", views.login),
     path("home/", views.home),
 
