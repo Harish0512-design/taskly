@@ -4,15 +4,20 @@
 
 <h1>Login Page</h1>
 
-{% for user in users %}
+<form method="POST">
 
-<div>
-    <p> {{ user.id }}</p>
-    <p> {{ user.name }}</p>
-    <p> {{ user.Profession }} </p>
-    <hr>
-</div>
+    {% csrf_token %}
 
-{% endfor %}
+    {% if messages %}
+        {% for message in messages %}
+            {{ message }}
+        {% endfor %}
+    {% endif %}
+
+    {{ form.as_p }}
+
+    <input type="submit" value="Login" />
+</form>
+
 
 {% endblock %}

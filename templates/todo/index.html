@@ -4,13 +4,22 @@
 
 <h1> Home Page </h1>
 
-<a href="{% url 'user-registration' %}"> Register a User</a>
+{% if user.is_authenticated %}
 
-
-<p>
-    <a href="/todo/tasks/create/"> Create Task </a>
+    <p>
+        <a href="/todo/tasks/create/"> Create Task </a>
         &nbsp; &nbsp; &nbsp;
-    <a href="/todo/tasks/"> Tasks </a>
-</p>
+        <a href="/todo/tasks/"> Tasks </a>
+        &nbsp; &nbsp;&nbsp;
+        <a href="/todo/logout/"> Logout </a>
+    </p>
+
+{% else %}
+
+    <a href="{% url 'user-registration' %}"> Register </a>
+    &nbsp; &nbsp;
+    <a href="{% url 'user-login' %}"> Login </a>
+
+{% endif %}
 
 {% endblock %}
