@@ -137,3 +137,12 @@ def delete_task(request, pk):
     context = {"object": task}
 
     return render(request, "todo/task_delete.html", context=context)
+
+
+def social_auth_home(request):
+    tasks_queryset = Task.objects.all()
+
+    context = {
+        "tasks": tasks_queryset
+    }
+    return render(request, "todo/index_for_social_auth.html", context=context)

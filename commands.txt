@@ -18,3 +18,45 @@ python manage.py createsuperuser
 
 # if you want phonenumber field in model
 # pip install phonenumbers django-phonenumber-field
+
+
+# Social Authentication for Django
+# you can login or signup through github, google, facebook , instagram, twitter etc
+pip install django-allauth
+
+# path('accounts/', include('allauth.urls'))
+# contains accounts/login/, accounts/logout, accounts/signup everything that django needs
+
+
+
+# get client_id, secret, key(optional for some applications) from their official site.
+
+# ex: for github. go to the url : https://github.com/settings/applications/new
+# generate client id by providing
+# 1. Application name : taskly
+# 2. home page url : http://127.0.0.1:8000/ (for local testing (provide domain url))
+# 3. callback url  : http://127.0.0.1:8000/github/login/callback
+# 4. click on generate.
+
+# ex: for google :
+# https://console.developers.google.com/
+# go to Oath contest screen
+# register your application by providing:
+# --> app name, gmail, domain if you have
+# --> get secret and client_id by clicking on credentials
+# -----> click on create credentials
+# -----> select oath client id
+# -----> provide:
+# ----------> Application type, Name for client id,
+# ----------> JS origin as http://127.0.0.1:8000/
+# ----------> callback url : http://127.0.0.1:8000/accounts/google/login/callback/
+# ----------> click on create
+# ----------> copy client_id and secret now.
+
+
+# python-decouple
+# to access environment variables (create .env file)
+pip install python-decouple
+
+# to access these variables use
+# from python

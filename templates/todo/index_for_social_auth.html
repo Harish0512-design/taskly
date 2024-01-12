@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<h1> Home Page </h1>
+
+{% if user.is_authenticated %}
+
+<p>
+    <a href="/todo/tasks/create/"> Create Task </a>
+    &nbsp; &nbsp; &nbsp;
+    <a href="/todo/tasks/"> Tasks </a>
+    &nbsp; &nbsp;&nbsp;
+    <a href="{% url 'account_logout' %}"> Logout </a>
+</p>
+
+{% else %}
+
+<a href="{% url 'account_signup' %}"> Register </a>
+&nbsp; &nbsp;
+<a href="{% url 'account_login' %}"> Login </a>
+
+{% endif %}
+
+{% endblock %}

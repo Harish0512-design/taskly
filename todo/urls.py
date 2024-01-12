@@ -8,7 +8,9 @@ urlpatterns = [
 
     path("register/", views.register, name='user-registration'),
     path("login/", views.user_login, name='user-login'),
-    path("logout/", views.user_logout, name ='user-logout'),
+    path("logout/", views.user_logout, name='user-logout'),
+
+    path("home_page_for_social_auth", views.social_auth_home, name="social_auth"),
 
     path("tasks/create/", views.create_task, name='create-task'),
     path("tasks/", views.task_list, name='view-tasks'),
