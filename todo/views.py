@@ -1,6 +1,6 @@
 # from django.http import HttpResponse
 from django.shortcuts import render, redirect
-from django.db import connection
+from django.contrib import messages
 
 from .forms import TaskForm
 from .models import Task
@@ -71,3 +71,26 @@ def task_list(request):
     context = {"tasks": tasks}
 
     return render(request, "todo/task_list.html", context=context)
+
+
+def update_task(request, pk):
+    task = Task.objects.get(id=pk)
+    form = TaskForm(instance=task)
+
+    success_msg = "Task Updated Successfully"
+    error_msg = "Something went wrong. Please Try Again..."
+
+    if request.method == "POST":
+        form = TaskForm(request.POST, instance=task)
+        if form.is_valid():
+            form.save()
+
+            messages.success(request, success_msg)
+            return redirect("/todo/tasks/update/" + str(task.id))
+
+        messages.error(request, error_msg)
+        return redirect("/todo/tasks/update/" + str(task.id))
+
+    context = {'form': form}
+
+    return render(request, "todo/update_task.html", context=context)
