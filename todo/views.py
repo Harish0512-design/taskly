@@ -1,5 +1,6 @@
 # from django.http import HttpResponse
 from django.contrib.auth import authenticate, login, logout
+from django.contrib.auth.decorators import login_required
 from django.contrib.auth.forms import AuthenticationForm
 from django.shortcuts import render, redirect
 from django.contrib import messages
@@ -72,6 +73,7 @@ def user_logout(request):
     return redirect("/todo/home")
 
 
+@login_required(login_url="user-login")
 def create_task(request):
     form = TaskForm()
     success_msg = "Task Created Successfully"
@@ -91,6 +93,7 @@ def create_task(request):
     return render(request, "todo/task_form.html", context=context)
 
 
+@login_required(login_url="user-login")
 def task_list(request):
     tasks = Task.objects.all()
     context = {"tasks": tasks}
@@ -98,6 +101,7 @@ def task_list(request):
     return render(request, "todo/task_list.html", context=context)
 
 
+@login_required(login_url="user-login")
 def update_task(request, pk):
     task = Task.objects.get(id=pk)
     form = TaskForm(instance=task)
@@ -121,6 +125,7 @@ def update_task(request, pk):
     return render(request, "todo/update_task.html", context=context)
 
 
+@login_required(login_url="user-login")
 def delete_task(request, pk):
     task = Task.objects.get(id=pk)
 
