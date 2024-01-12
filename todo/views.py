@@ -57,9 +57,9 @@ def create_task(request):
 
         if form.is_valid():
             form.save()
-            return redirect("/todo/create-task/?msg=" + success_msg)
+            return redirect("/todo/tasks/create/?msg=" + success_msg)
 
-        return redirect("/todo/create-task/?msg=" + error_msg)
+        return redirect("/todo/tasks/create/?msg=" + error_msg)
 
     context = {'form': form}
 
@@ -94,3 +94,16 @@ def update_task(request, pk):
     context = {'form': form}
 
     return render(request, "todo/update_task.html", context=context)
+
+
+def delete_task(request, pk):
+    task = Task.objects.get(id=pk)
+
+    if request.method == "POST":
+        task.delete()
+        messages.success(request, "Task Deleted Successfully...")
+        return redirect(to="/todo/tasks/")
+
+    context = {"object": task}
+
+    return render(request, "todo/task_delete.html", context=context)

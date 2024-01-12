@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h4> Are You Sure want to delete the Task {{object.title}}? </h4>
+
+<form method="POST">
+
+    {% csrf_token %}
+
+    <a href="{% url 'view-tasks' %}"> Go Back </a>
+    &nbsp;&nbsp;
+    <input type="submit" value="Confirm Delete"/>
+
+</form>
+
+{% endblock %}

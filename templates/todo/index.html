@@ -4,6 +4,12 @@
 
 <h1> Home Page </h1>
 
+<p>
+    <a href="/todo/tasks/create/"> Create Task </a>
+        &nbsp; &nbsp;
+    <a href="/todo/tasks/"> Tasks </a>
+</p>
+
 {% for task in tasks %}
 
 <h2> <span>{{task.id}}</span> {{ task.title }} </h2>
